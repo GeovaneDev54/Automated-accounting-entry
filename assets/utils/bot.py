@@ -12,7 +12,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from time import sleep
 
 def select_browser(browser:str='chrome'):
     if browser == 'chrome':
@@ -82,3 +81,6 @@ class Bot:
         WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.XPATH, '//button[text()="Concluir"]'))).click()
         WebDriverWait(self.driver, 30).until(EC.alert_is_present()).accept()
         WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.CLASS_NAME, 'btn-primary'))).click()
+
+    def quit(self):
+        self.driver.quit()
